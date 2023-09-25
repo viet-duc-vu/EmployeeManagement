@@ -30,7 +30,7 @@ public class EmployeeService {
     }
 
     public Employee addEmployee(Employee e) {
-        if (employeeAlreadyExist(e.getEmail())) {
+        if (emailAlreadyExist(e.getEmail())) {
             throw new EmployeeAlreadyExistException(e.getEmail() + " already exist!");
         }
 
@@ -38,6 +38,9 @@ public class EmployeeService {
     }
 
     public Employee updateEmployee(Employee e, Long id) {
+        if (emailAlreadyExist(e.getEmail())) {
+            throw new EmployeeAlreadyExistException(e.getEmail() + " already exist!");
+        }
         return employeeRepository.findById(id).map(employee -> {
             employee.setFirstName(e.getFirstName());
             employee.setLastName(e.getLastName());
@@ -53,7 +56,7 @@ public class EmployeeService {
         employeeRepository.deleteById(id);
     }
 
-    private boolean employeeAlreadyExist(String email) {
+    private boolean emailAlreadyExist(String email) {
         return employeeRepository.findEmployeeByEmail(email).isPresent();
     }
 }
