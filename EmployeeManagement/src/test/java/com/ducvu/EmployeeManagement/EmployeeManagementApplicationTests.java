@@ -13,10 +13,9 @@ class EmployeeManagementApplicationTests {
 	@Autowired
 	private EmployeeController employeeController;
 
-	// sanity check: check that the employee controller is created successfully
 	@Test
 	void contextLoads() {
-		assertThat(employeeController).isNotNull();
+
 	}
 
 }

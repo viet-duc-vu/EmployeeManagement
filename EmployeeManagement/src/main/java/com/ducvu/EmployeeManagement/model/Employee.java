@@ -23,4 +23,11 @@ public class Employee {
     @NaturalId(mutable = true)
     private String email;
     private String department;
+
+    public Employee(String firstName, String lastName, String email, String department) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.department = department;
+    }
 }
