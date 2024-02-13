@@ -1,15 +1,15 @@
-package com.ducvu.EmployeeManagement;
+package com.ducvu.EmployeeManagement.service;
 
 import com.ducvu.EmployeeManagement.exception.EmployeeAlreadyExistException;
 import com.ducvu.EmployeeManagement.exception.EmployeeNotFoundException;
 import com.ducvu.EmployeeManagement.model.Employee;
 import com.ducvu.EmployeeManagement.repository.EmployeeRepository;
-import com.ducvu.EmployeeManagement.service.EmployeeService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
@@ -31,15 +31,11 @@ public class EmployeeServiceTest {
 
     @Mock
     private EmployeeRepository employeeRepository;
+    @InjectMocks
     private EmployeeService underTest;
 
     @Captor
     private ArgumentCaptor<Employee> employeeArgumentCaptor;
-
-    @BeforeEach
-    public void setUp() {
-        underTest = new EmployeeService(employeeRepository);
-    }
 
     @Test
     void shouldGetAllEmployees() {
